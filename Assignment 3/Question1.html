@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Question 1 - Assignment 3</title>
+        <script>
+            // Define the var result globally as empty at first
+            var result = "";
+            /* Now run the function that is triggered by the buttons
+            also pass a parameter that comes from the particular button clicked */
+            function num(numbers) {
+                // Get the div id to display the results
+                var display = document.getElementById("numberDisplay");
+                // Result is equal to what the result was before plus the parameter
+                result = result + numbers;
+                // display the result
+                display.innerHTML = "You have entered " + result;
+                // Now save the result again with a hyphen for the next click
+                result = result + "-"
+            }
+        </script>
+    </head>
+    <body>
+        <button onClick="num('zero')">0</button>
+        <button onClick="num('one')">1</button>
+        <button onClick="num('two')">2</button>
+        <button onClick="num('three')">3</button>
+        <button onClick="num('four')">4</button>
+        <button onClick="num('five')">5</button>
+        <button onClick="num('six')">6</button>
+        <button onClick="num('seven')">7</button>
+        <button onClick="num('eight')">8</button>
+        <button onClick="num('nine')">9</button>
+        <br /><br />
+        <div id="numberDisplay"></div>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Question 3</title>
+        <script>
+            function createJSON() {
+                // get the subject code
+                var subCode = document.getElementById("subCode").value;
+
+                // get the subject title
+                var subTitle = document.getElementById("subTitle").value;
+
+                // get the credit points
+                var subCP = Number(document.getElementById("subCP").value);
+
+                // get the core subject checkbox
+                var coreSub = document.getElementById("coreSub").checked;
+
+                // create the object
+                var subjectObj = {
+                    subjectCode: subCode,
+                    subjectTitle: subTitle,
+                    creditPoint: subCP,
+                    coreSubject: coreSub
+                };
+
+                // stringify the object
+                var objJson = JSON.stringify(subjectObj, null, 2);
+                console.log(objJson);
+
+                // display JSON in the text area
+                var viewJSON = document.getElementById("JSONdisplay");
+                viewJSON.value = objJson;
+            }
+
+        </script>
+    </head>
+    <body>
+        Subject code: <input type="text" id="subCode" />
+        <br />
+        Subject title: <input type="text" id="subTitle" />
+        <br />
+        Subject credit point: <input type="text" id="subCP" />
+        <br />
+        Core subject: <input type="checkbox" id="coreSub" />
+        <br /><br />
+        <button onClick="createJSON()">View JSON</button><br />
+        <textarea rows="20" cols="50" id="JSONdisplay">
+        </textarea>
+    </body>
+</html>

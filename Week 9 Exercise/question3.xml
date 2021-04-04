@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="question3.xsl"?>
+    <audit campus="Woolloomooloo" year="2000" session="A">
+        <subject sid="0769642">
+            <code>MATH101</code>
+            <title>Calculus</title>
+            <statistics>
+                <enrol>170</enrol>
+                <withdrawn>31</withdrawn>
+            </statistics>
+        </subject>
+        <subject sid="1734231">
+            <code>MATH234</code>
+            <title>Abstract Algebra</title>
+            <statistics>
+                <enrol>40</enrol>
+                <withdrawn>15</withdrawn>
+            </statistics>
+        </subject>
+        <subject sid="1928678">
+            <code>WW101</code>
+            <title>Witchcraft and Wizardry</title>
+            <statistics>
+                <enrol>30</enrol>
+                <withdrawn>5</withdrawn>
+            </statistics>
+        </subject>
+        <subject sid="9275172">
+            <code>APOT185</code>
+            <title>Advanced Potions</title>
+            <statistics>
+                <enrol>45</enrol>
+                <withdrawn>12</withdrawn>
+            </statistics>
+        </subject>
+        <subject sid="1928462">
+            <code>SPE666</code>
+            <title>Introduction to Spells</title>
+            <statistics>
+                <enrol>28</enrol>
+                <withdrawn>2</withdrawn>
+            </statistics>
+        </subject>
+    </audit>

@@ -1,0 +1,161 @@
+<html>
+    <head>
+        <title>Javascript Exercises</title>
+        <script>
+            // Q1 script
+                // Print the messae to the console
+                function consoleHi() {
+                    console.log("Hi there! JavaScript is cool!");
+                }
+                // Print the messae on an alert
+                function alertHi() {
+                    alert("Hi there! JavaScript is cool!");
+                }
+
+            // Q2 script
+                // This is what happens when you click the lion button
+                function displayLion() {
+                    var animalDisplay = document.getElementById("animalText")
+
+                    animalDisplay.innerHTML = "The Lion Button is clicked";
+                }
+                // This is what happens when you click the frog button
+                function displayFrog() {
+                    var animalDisplay = document.getElementById("animalText");
+                    animalDisplay.innerHTML = "The Frog Button is clicked";
+                }
+            // Q3 script
+                // Lion image code
+                function showLion() {
+                    var animalImageDisplay = document.getElementById("animalImage");
+                    animalImageDisplay.src = "images/lion.jpg";
+                }
+
+                // Frog image code
+                function showFrog() {
+                    var animalImageDisplay = document.getElementById("animalImage");
+                    animalImageDisplay.src = "images/frog.jpg";
+                }
+
+            // Q4 script
+                // Show lion message
+                function lionMessage() {
+                    var showAnimalMessage = document.getElementById("displayImageMessage");
+                    showAnimalMessage.innerHTML = "<span style='color: orange;'>Roar</span>"
+                }
+
+                // Show frog message
+                function frogMessage() {
+                    var showAnimalMessage = document.getElementById("displayImageMessage");
+                    showAnimalMessage.innerHTML = "<span style='color: green;'>Ribbit</span>"
+                }
+            // Q5 script
+                // Define what the counter is worth at first
+                var lionCounter = 0
+
+                // Define what happens when you click the button
+                function lionClick() {
+                    // The counter is equal to whatever it was before plus one
+                    lionCounter = lionCounter + 1;
+
+                    // Get the span ID to change
+                    var lionCounting = document.getElementById("lionCount");
+                    // Save the count as what it is now so that when the button is clicked again, it adds another 1 to what it was previously
+                    lionCounting.innerHTML = lionCounter;
+                }
+
+                // Same as above but for the frog
+                var frogCounter = 0
+
+                function frogClick() {
+                    frogCounter = frogCounter + 1;
+
+                    var frogCounting = document.getElementById("frogCount");
+                    frogCounting.innerHTML = frogCounter;
+                }
+
+            // Q6 script
+                // Define what the count of the frog should be first, which is empty string
+                froggies = "";
+
+                // Call the onClick function
+                function frogFaceClick() {
+                    // Define that once the button is clicked, froggies should be what it was before plus the frog emoji
+                    froggies = froggies + "&#128056;"
+                
+                    // Find the span ID to show the output and save this to the frogMultiplies var
+                    var frogMultiplies = document.getElementById("frogFaces");
+                    // Now show froggies in the span ID, and save froggies as the new value
+                    frogMultiplies.innerHTML = froggies;
+
+
+                }
+
+        </script>
+    </head>
+
+    <body>
+<!-- This is the first question -->
+        <h1>Question 1</h1>
+        <button onClick="consoleHi()">Console Hi</button>
+        <button onClick="alertHi()">Alert Hi</button>
+        <br />
+        <hr />
+
+<!-- This is the second question -->
+        <h1>Question 2</h1>
+        <button onClick="displayLion()">Lion</button>
+        <button onClick="displayFrog()">Frog</button>
+        <br />
+        <br />
+        <span id="animalText"></span>
+        <br />
+        <br />
+        <hr />
+
+<!-- This is the third question -->
+        <h1>Question 3</h1>
+        <button onClick="showLion()">Lion</button>
+        <button onClick="showFrog()">Frog</button>
+        <br />
+        <br />
+        <img id="animalImage" width="250px"/>
+        <br />
+        <hr />
+
+<!-- This is the fourth question -->
+        <h1>Question 4</h1>
+
+        <img src="images/lion.jpg" alt="Lion" width="250px" onClick="lionMessage()" />
+        <img src="images/frog.jpg" alt="Frog" width="250px" onClick="frogMessage()"/>
+        <br />
+        <br />
+        <span id="displayImageMessage"></span>
+        <br />
+        <hr />
+
+<!-- This is the fifth question -->
+        <h1>Question 5</h1>
+
+        <img src="images/lion.jpg" alt="Lion" width="250px" onClick="lionClick()" />
+        <img src="images/frog.jpg" alt="Frog" width="250px" onClick="frogClick()"/>
+        <br />
+        <br />
+       <div style="color:orange;">Total Lion Clicks: </span><span id="lionCount">0</span></div>
+        <br />
+        <div style="color:green;">Total Frog Clicks: </span><span id="frogCount">0</span></div>
+        <br />
+        <hr />
+
+<!-- This is the sixth question -->
+        <h1>Question 6</h1>
+
+        <img src="images/frog.jpg" alt="frog" width="250px" onClick="frogFaceClick()" />
+        <br />
+        <br />
+        <span id="frogFaces"></span>
+        <br />
+        <hr />
+
+    </body>
+</html>

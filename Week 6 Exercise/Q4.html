@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Week 6 Question 4</title>
+        <script>
+            // original count is 0
+            var counter = 0;
+            // declare animation variable but do nothing yet
+            var animation;
+            var animationOn = false;
+    
+            function startCounter() {
+                // once the counter starts, add 1 to the existing count
+                counter = counter + 1;
+                // display the current count
+                countDisplay = document.getElementById("displayCount");
+                countDisplay.innerHTML = counter;
+            }
+
+            function start() {
+                if (!animationOn) {
+                    animationOn = true;
+                    // now make animation variable trigger the counter
+                    animation = setInterval(startCounter, 1000);
+                }
+            }
+
+            function stop() {
+                if (animationOn) {
+                    animationOn = false;
+                    // stop the animation
+                    clearInterval(animation);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="start()">Start counter animation</button>
+        <button onclick="stop()">Stop counter animation</button><br/>
+        <p id="displayCount" style="font-size: 40px;">0</p>
+    </body>
+</html>

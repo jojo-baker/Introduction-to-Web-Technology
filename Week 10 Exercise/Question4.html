@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>
+            Question 4
+        </title>
+        <script>
+            function readJSON() {
+                // get the JSON
+                var subJson = document.getElementById("jsonSource").value;
+
+                // parse the JSON into an object
+                var subObj = JSON.parse(subJson);
+
+                // get the subject code
+                var subCode = document.getElementById("subCode");
+                // display the subject code
+                var codeDisplay = subObj.subjectCode;
+                subCode.value = codeDisplay
+
+                // get the subject title
+                var subTitle = document.getElementById("subTitle");
+                // display the subject title
+                var titleDisplay = subObj.subjectTitle;
+                subTitle.value = titleDisplay;
+
+                // get the credit points
+                var subCP = document.getElementById("subCP");
+                // display the credit points
+                var cpDisplay = subObj.creditPoint;
+                subCP.value = cpDisplay;
+
+                // get the core subject checkbox
+                var coreSub = document.getElementById("coreSub");
+                // display the core subject checkbox
+                var coreDisplay = subObj.coreSubject;
+                coreSub.checked = coreDisplay;
+            }
+        </script>
+    </head>
+    <body>
+        <textarea rows="10" cols="50" id="jsonSource">
+        </textarea><br />
+        <button onClick="readJSON()">Read JSON</button>
+        <br /><br />
+        Subject code: <input type="text" id="subCode" />
+        <br />
+        Subject title: <input type="text" id="subTitle" />
+        <br />
+        Subject credit point: <input type="text" id="subCP" />
+        <br />
+        Core subject: <input type="checkbox" id="coreSub" />
+        <br /><br />
+    </body>
+</html>

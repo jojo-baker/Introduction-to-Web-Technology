@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>Drag and Drop 2</title>
+
+        <style>
+            #CatDog {
+                font-size: 80px;
+            }
+        </style>
+
+        <script>
+
+            function dragStart(event) {
+
+                // get drag id
+                var dragID = event.target.id;
+
+                // set drag id into transfer object
+                event.dataTransfer.setData("dragID", dragID);
+
+            }
+
+            dogCount = 0;
+            catCount = 0;
+
+            function drop(event) {
+
+                // get drop id
+                var dropID = event.target.id;
+
+                // get object id
+                var dragID = event.dataTransfer.getData("dragID");
+                
+                // write the logic to display
+
+                if((dropID == "dogText") && (dragID == "dogIMG")) {
+                    dogCount++;
+
+                    var dogDrop = document.getElementById("dogDrop");
+                    var html = animalImage("dog",dogCount);
+                    dogDrop.innerHTML = html;
+
+                }
+                if((dropID == "catText") && (dragID == "catIMG")) {
+
+                    catCount++;
+
+                    var catDrop = document.getElementById("catDrop");
+                    var html = animalImage("cat", catCount)
+                    catDrop.innerHTML = html;
+                }
+            }
+
+            function animalImage(imSrc, count) {
+
+                var html = "";
+
+                for (var i=0; i < count; i++) {
+                    html = html + "<img src='images/" + imSrc + ".png' height='150px'>";
+                }
+                
+                return html;
+
+            }
+
+            function dragOver(event) {
+                event.preventDefault();
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+        <br /><br />
+        Drag an animal and drop it on the corresponding text.
+        <br /><br /><br />
+
+        <div id="CatDog">
+            <div id="dogText" onDrop="drop(event)" onDragOver="dragOver(event)">
+                DOG <span id="dogDrop"></span>
+            </div>
+
+            <div id="catText" onDrop="drop(event)" onDragOver="dragOver(event)">
+                CAT <span id="catDrop"></span>
+            </div>
+        </div>
+        <br /><br />
+
+        <img src="images/cat.png" alt="cat" height="150px" draggable="true" ondragstart="dragStart(event)" id="catIMG">
+
+        &nbsp;&nbsp;&nbsp;
+
+        <img src="images/dog.png" alt="dog" height="150px" draggable="true" ondragstart="dragStart(event)" id="dogIMG">
+        
+    </body>
+</html>

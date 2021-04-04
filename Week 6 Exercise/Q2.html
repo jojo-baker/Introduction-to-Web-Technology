@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Week 6 Question 2</title>
+        <script>
+            function checkAnswer() {
+                // get input 1's value and save it to this variable as a number
+                var input1 = Number(document.getElementById("inp1").value);
+                // get input 2's value and save it to this variable as a number
+                var input2 = Number(document.getElementById("inp2").value);
+                // get input 3's value and save it to this variable as a number
+                var input3 = Number(document.getElementById("inp3").value);
+                // get the span
+                var comment = document.getElementById("commentDisplay");
+                // get the operation selection
+                var operation = document.getElementById("selection").value;
+                // define the answer as 0 initially
+                var answer = 0;
+                // if they chose + then the answer is input 1 + input 2
+                if (operation == "+") {
+                    answer = input1 + input2;
+                }
+                // if they chose - then the answer is input 1 - input 2
+                else if (operation == "-") {
+                    answer = input1 - input2;
+                }
+                // if they chose x then the answer is input 1 x input 2
+                else if (operation == "x") {
+                    answer = input1 * input2;
+                }
+                // if the answer equals input 3 then display the message that they're correct
+                if (answer == input3) {
+                    comment.innerHTML = "Correct!";
+                }
+                // if the answer does not equal input 3 then display the message that they're incorrect
+                else {
+                    comment.innerHTML = "Incorrect, please try again.";
+                }
+                
+            }
+        </script>
+    </head>
+    <body>
+        <input id="inp1" type="text" />
+        <select id="selection">
+            <option>+</option>
+            <option>-</option>
+            <option>x</option>
+        </select>
+        <input id="inp2" type="text" />
+         = 
+        <input id="inp3" type="text" />
+        <button onclick="checkAnswer()">Check</button>
+        <span id="commentDisplay"></span>
+    </body>
+</html>

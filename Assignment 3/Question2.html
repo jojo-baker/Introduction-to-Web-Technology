@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Question 2 - Assignment 3</title>
+        <script>
+            // On off switch for the animation, starts as off
+            var aniCheck = false;
+            // On off switch for the image, starts as off
+            var imgCheck = false;
+            // Variable  for the animation
+            var animation;
+
+            // This function starts when the start animation function tells it to
+            function display() {
+                // Get the div ID
+                var imgDisplay = document.getElementById("displayImg");
+                // If the image switch is false, then switch to true and display frog
+                if (!imgCheck) {
+                    imgCheck = true;
+                    imgDisplay.src = 'images/frog.jpg';
+                }
+                // Else turn the image switch to false and display lion
+                else {
+                    imgCheck = false;
+                    imgDisplay.src = 'images/lion.jpg';
+                }
+            }
+
+            // This function starts the animation when the start button is clicked
+            function imgAniStart() {
+                // If the animation is off (false), switch to true (on) and start the animation, if it is on (true) then do nothing
+                if (!aniCheck) {
+                    aniCheck = true;
+                    animation = setInterval(display, 500);
+                }
+            }
+
+            // This function stops the animation when the stop button is clicked
+            function imgAniStop() {
+                // If the animation is on (true), switch to false (off) and stop the animation, if it is already off (false) then do nothing
+                if (aniCheck) {
+                    aniCheck = false;
+                    clearInterval(animation);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button onClick="imgAniStart()">Start Animation</button>
+        <button onClick="imgAniStop()">Stop Animation</button>
+        <br /><br />
+        <img id="displayImg" width="150px"/>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Question 4 | Jo Baker (7044604)</title>
+
+        <script>
+
+            // original student number
+            var studentNumber = 7044604;
+            // count to add to student number
+            var numCount = 0;
+            // result will be student number plus count, for the moment it's equal to student number
+            var result = studentNumber;
+
+            // declare the animation but don't do anything yet
+            var animation;
+            var animationOn = false;
+
+            function counter() {
+                // once the start button is clicked, increase the count by 1
+                numCount = numCount + 1;
+
+                // calculate the result
+                result = studentNumber + numCount;
+
+
+                // then display it
+                var displayAnimation = document.getElementById("animationDisplay");
+                displayAnimation.innerHTML = studentNumber + " + " + numCount + " = " + result;
+            }
+
+            function startAnimation() {
+                // check if the animation is already on: if it is then do nothing, if it isn't then turn it on
+                if(!animationOn) {
+                    // set the animation on
+                    animationOn = true;
+                    // animation triggers the counter
+                    animation = setInterval(counter, 1000);
+                }
+                
+            }
+
+            function stopAnimation() {
+                // check if animation is on: if it is then turn it off, if it isn't then do nothing
+                if(animationOn) {
+                    // set animation off
+                    animationOn = false;
+                    // stop the animation
+                    clearInterval(animation);
+                }
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+        <button onclick="startAnimation()">Start Animation</button>
+        <button onclick="stopAnimation()">Stop Animation</button>
+
+        <br /><br />
+
+        <div id="animationDisplay"></div>
+        
+    </body>
+</html>

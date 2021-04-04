@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Week 6 Question 1</title>
+        <script>
+            function getSubjects() {
+                // get subject 1
+                var sub1 = document.getElementById("inp1");
+                // get subject 2
+                var sub2 = document.getElementById("inp2");
+                // get subject 3
+                var sub3 = document.getElementById("inp3");
+                // get subject 4
+                var sub4 = document.getElementById("inp4");
+                // get the div
+                var subjectList = document.getElementById("showSubjects");
+                // display everything in the div
+                subjectList.innerHTML = "You have selected " + sub1.value + ", " + sub2.value + ", " + sub3.value + " and " + sub4.value;
+            }
+        </script>
+    </head>
+    <body>
+        Subject 1: <input id="inp1" type="text" /><br /><br />
+        Subject 2: <input id="inp2" type="text" /><br /><br />
+        Subject 3: <input id="inp3" type="text" /><br /><br />
+        Subject 4: <input id="inp4" type="text" /><br /><br />
+        <button onclick="getSubjects()">Show selection</button><br /><br />
+        <div id="showSubjects"></div>
+    </body>
+</html>

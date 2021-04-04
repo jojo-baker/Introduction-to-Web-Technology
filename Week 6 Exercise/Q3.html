@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Week 6 Question 3</title>
+        <script>
+            // declare the counter to be 0 globally initally
+            var counter = 0;
+           function count() {
+                // get the span
+                var displayCount = document.getElementById("countDisplay");
+                // add 1 to the current count
+                counter = counter + 1;
+                // display the current count
+                displayCount.innerHTML = counter;
+           }
+        </script>
+    </head>
+    <body>
+        <button onclick="count()">Increase counter</button><br/><br/>
+        <span id="countDisplay">0</span>
+    </body>
+</html>

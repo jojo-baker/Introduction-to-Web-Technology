@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Question 3 - Assignment 3</title>
+        <script>
+            // Define variable for animation
+            var frogGame;
+            // Define variable for the score
+            var score;
+            // Define the variable for telling if the game is active or not
+            var gameActive = false;
+
+            // This function is triggered when someone clicks on the frog image
+            function clickPositive() {
+                // Add 1 to the current score
+                score = score + 1;
+            }
+
+            // This function is triggered when someone clicks on another image
+            function clickNegative() {
+                score = score - 1;
+            }
+
+            // This function is triggered by the animation function
+            function game() {
+                // Generate a random number between 1 and 5
+                var imgNum = Math.floor(Math.random() * 5) + 1;
+                // Add the number to the image file name and save into the variable imageFile
+                var imageFile = "images/game" + imgNum + ".jpg";
+                // Get the img ID to display the image
+                var gameImage = document.getElementById("imgDisplay");
+                // Save the src of the img whose ID we just got to be the same as the imageFile variable we created earlier
+                gameImage.src = imageFile;
+                // Get the div ID where we want to display the score
+                var getScore = document.getElementById("scoreDisplay");
+
+                // If the imageFile has the src of the below (which is the frog), change the onClick to call the function clickPositive
+                if (imageFile == "images/game1.jpg") {
+                    // I think it's good practice to put both statements below so they work on different browsers
+                    gameImage.onClick = function () { clickPositive(); }; // Apparently this works for IE
+                    gameImage.setAttribute('onClick', 'clickPositive()'); // Apparently this works for FF
+                }
+                // If the imageFile is not the frog, change the onClick to call the function clickNegative
+                else {
+                    // As mentioned before, each statement below is for different browsers
+                    gameImage.onClick = function () { clickNegative(); };
+                    gameImage.setAttribute('onClick', 'clickNegative()');
+                }
+
+                // If the score is above or equal to 5, do this
+                if (score >= 5) {
+                   // Change div to say the below. I hardcoded the score so the displayed score is never over 5 (which I found was possible if they clicked multiple times really fast, even though the game ends at 5)
+                   getScore.innerHTML = "Your score is 5. Game over - You win!";
+                   // Stop the animation
+                   clearInterval(frogGame);
+                   // Change the gameActive to be false
+                   gameActive = false;
+                   // Change the onClick function to be empty so that if a user keeps clicking the image their score doesn't change after the game has stopped (even though it won't display)
+                   gameImage.onClick = function () { ; }; // Apparently this works for IE
+                   gameImage.setAttribute('onClick', ''); // Apparently this works for FF
+                }
+                // If the score is below or equal to -5, do this
+                else if (score <= -5) {
+                    // Change div to say the below. I hardcoded the score so the displayed score is never under -5 (which I found was possible if they clicked multiple times really fast, even though the game ends at -5)
+                    getScore.innerHTML = "Your score is -5. Game over - You lose!";
+                    // Stop the animation
+                    clearInterval(frogGame);
+                    // Change the gameActive to be false
+                    gameActive = false;
+                    // Change the onClick function to be empty so that if a user keeps clicking the image their score doesn't change after the game has stopped (even though it won't display)
+                    gameImage.onClick = function () { ; }; // Apparently this works for IE
+                    gameImage.setAttribute('onClick', ''); // Apparently this works for FF
+                }
+                // Do this if the score is anything else
+                else {
+                    getScore.innerHTML = "Your score is " + score;
+                }
+            }
+
+            // This function is triggered by the user clicking the start button
+            function startGame() {
+                // If the gameActive is false, then the game must be finished or not started yet, so do this
+                if (!gameActive) {
+                    // Switch the gameActive to true
+                    gameActive = true;
+                    // Make the score be 0 so it clears a previous game's score
+                    score = 0;
+                    // Start the animation
+                    frogGame = setInterval(game, 500);
+                }
+                // If the gameActive is true, then do nothing
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1>Click-a-frog</h1>
+        <button onclick="startGame()">Start frog game</button>
+        <br /><br />
+        <div id="scoreDisplay"></div>
+        <br /><br />
+        <img id="imgDisplay" onClick="" height="150px" />
+    </body>
+</html>

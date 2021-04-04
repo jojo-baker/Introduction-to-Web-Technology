@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <title>Question 4</title>
+        <script>
+            function makeAjaxQuery() {
+                // create an XMLHttpRequest
+                var xhttp = new XMLHttpRequest();
+
+                // create a handler for the readyState change
+                xhttp.onreadystatechange = function() {
+                    readyStateChangeHandler(xhttp);
+                };
+
+                // get JSON file by making async call
+                xhttp.open("GET", "Question4.json", true);
+                xhttp.send();
+            }
+
+            // handler for the readyState change
+            function readyStateChangeHandler(xhttp){
+                if (xhttp.readyState == 4){
+                // readyState = 4 means DONE
+                if(xhttp.status == 200){
+                // status = 200 means OK
+                handleStatusSuccess(xhttp);
+                }else{
+                // status is NOT OK
+                handleStatusFailure(xhttp);
+                }
+                }
+            }
+
+            // XMLHttpRequest failed
+            function handleStatusFailure(xhttp){
+                // display error message
+                var displayDiv = document.getElementById("displayJson");
+                displayDiv.innerHTML = "XMLHttpRequest failed: status " + xhttp.status;
+            }
+
+
+            function handleStatusSuccess(xhttp){
+                var jsonText = xhttp.responseText;
+                // parse the json into an object
+                var testResultObj = JSON.parse(jsonText);
+                // display the object on the page
+
+                displayTestResult(testResultObj);
+            }
+            
+            // display the information on the page
+            function displayTestResult(testResultObj){
+
+            // construct HTML code to display test result
+
+            // calculate the number of correct answers
+            var score = 0;
+            // loop through the questions and add 1 to score if answer is correct
+            for (var j=0; j<testResultObj.testResult.length; j++) {
+            var Qs = testResultObj.testResult[j];
+                if (Qs.yourAnswer == Qs.correctAnswer) {
+                    score = score + 1;
+                }
+            }
+            
+            // calculate the number of questions
+            var numberOfQuestions= testResultObj.testResult.length;
+
+            var html = "<h1>Test result. Student Reference Number: " + testResultObj.studentRefNumber + "</h1>";
+            html = html + "<p> You scored " + score + " out of " + numberOfQuestions + "</p>";
+            html = html + "<table cellspacing='2' cellpadding='10' id='resultTable'>";
+                html = html + "<tr>";
+                    html = html + "<th style='text-align: center'>Question</th>";
+                    html = html + "<th style='text-align: left'>Content</th>";
+                    html = html + "<th style='text-align: left'>Topic</th>";
+                    html = html + "<th style='text-align: center'>Correct Answer</th>";
+                    html = html + "<th style='text-align: center'>Your Answer</th>";
+                    html = html + "<th style='text-align: left'>Difficulty</th>";
+                html = html + "</tr>";
+
+                // for loop to find each item
+                for (var i=0; i<testResultObj.testResult.length; i++) {
+                var questions = testResultObj.testResult[i];
+                
+                // save the star in a variable
+                var difficultyStar = "&#11088";
+
+                // save the green tick in a variable
+                var greenTick = "<span style='color:green'>&#10003</span>";
+
+                // save the green tick if the answer is correct
+                var yourResult = "";
+                // make the question number cell grey if incorrect
+                var cellColor = "";
+                    if (questions.yourAnswer == questions.correctAnswer) {
+                        yourResult = greenTick;
+                    }
+                    if (questions.yourAnswer != questions.correctAnswer) {
+                        yourResult = questions.yourAnswer;
+                        cellColor = "background-color: lightgray;";
+                    }
+                
+                html = html + "<tr>";
+                    html = html + "<td style='text-align: center;" + cellColor + "'>" + questions.questionNumber + "</td>";
+                    html = html + "<td>" + questions.content +  "</td>";
+                    html = html + "<td>" + questions.topic +  "</td>";
+                    html = html + "<td style='text-align: center'>" + questions.correctAnswer +  "</td>";
+                    html = html + "<td style='text-align: center'>" + yourResult +  "</td>";
+                    html = html + "<td>" + difficultyStar.repeat(questions.difficultyLevel) + "</td>";
+                html = html + "</tr>";
+            };
+            html = html + "</table>"
+             
+
+            // show the constructed HTML code in the display div
+            var displayDiv = document.getElementById("displayJson");
+            displayDiv.innerHTML = html;
+            }
+
+        </script>
+    </head>
+    <body>
+        <button onclick="makeAjaxQuery()">Get Test Result</button>
+        <div id="displayJson">
+        </div>
+    </body>
+</html>

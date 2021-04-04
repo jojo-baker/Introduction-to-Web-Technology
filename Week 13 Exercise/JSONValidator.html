@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>JSON Validator</title>
+        <script>
+
+            function checkStorageSupported() {
+                if (typeof(Storage) !== "undefined") {
+                // local storage is supported
+                return true;
+                } else {
+                //local storage is not supported
+                return false;
+                console.log("Web Storage not supported");
+                }
+            }
+            
+
+            function validateJSON() {
+                // get the input
+                var JSONinput = document.getElementById("JSONinput").value;
+
+                // store the data in local storage
+
+                if(checkStorageSupported()) {
+                    localStorage.setItem("JSONValidations", JSONinput);
+                }
+                
+
+                var validationText = document.getElementById("validationText");
+                var html = "";
+
+                // parse JSON text from the input
+                // add a validator try catch error
+                try {
+                    JSON.parse(JSONinput);
+                    html =  "<span style = 'color:green'>"
+                            + "JSON is valid"
+                            + "</span>";
+                    validationText.innerHTML = html;
+                }
+                catch(error) {
+                    html =  "<span style = 'color:red'>"
+                            + "Error: " + error.message
+                            + "</span>";
+                    validationText.innerHTML = html;
+                }
+                
+            }
+
+            // onload function to display saved JSON text
+            function initApp() {
+
+                if(checkStorageSupported()) {
+                    // get the saved user input
+                    var savedJSON = localStorage.getItem("JSONValidations");
+
+                    // display it in the text area
+                    if(savedJSON != null) {
+                        var JSONinput = document.getElementById("JSONinput");
+                        JSONinput.value = savedJSON;
+                    }
+                }
+                
+            }
+
+        </script>
+    </head>
+
+    <body onLoad="initApp()">
+        Enter JSON to validate:<br />
+        <textarea id="JSONinput" rows="20" cols="50">
+
+        </textarea><br />
+        <button onClick="validateJSON()">Validate JSON</button> &nbsp;&nbsp; <span id="validationText"></span>
+    </body>
+
+</html>

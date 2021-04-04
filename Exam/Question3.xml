@@ -1,0 +1,52 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE playerList [
+    <!ELEMENT playerList (player*)>
+    <!ELEMENT player (firstName,lastName,nationalRating,internationalRating,country,matchHistoryList)>
+    <!ATTLIST player id CDATA #REQUIRED>
+    <!ELEMENT firstName (#PCDATA)>
+    <!ELEMENT lastName (#PCDATA)>
+    <!ELEMENT nationalRating (#PCDATA)>
+    <!ELEMENT internationalRating (#PCDATA)>
+    <!ELEMENT country (#PCDATA)>
+    <!ELEMENT matchHistoryList (match*)>
+    <!ELEMENT match (date,opponentFName,opponentLName,result)>
+    <!ELEMENT date (#PCDATA)>
+    <!ELEMENT opponentFName (#PCDATA)>
+    <!ELEMENT opponentLName (#PCDATA)>
+    <!ELEMENT result (#PCDATA)>
+]>
+<playerList>
+    <player id="0460123">
+        <firstName>John</firstName>
+        <lastName>Smith</lastName>
+        <nationalRating>5</nationalRating>
+        <internationalRating>146</internationalRating>
+        <country>Australia</country>
+        <matchHistoryList>
+            <match>
+                <date>25/03/2001</date>
+                <opponentFName>Naskov</opponentFName>
+                <opponentLName>Boris</opponentLName>
+                <result>win</result>
+            </match>
+            <match>
+                <date>02/04/2001</date>
+                <opponentFName>Joseph</opponentFName>
+                <opponentLName>Valentin</opponentLName>
+                <result>draw</result>
+            </match>
+            <match>
+                <date>03/07/2002</date>
+                <opponentFName>Martin</opponentFName>
+                <opponentLName>Tome</opponentLName>
+                <result>win</result>
+            </match>
+            <match>
+                <date>21/08/2003</date>
+                <opponentFName>Boja</opponentFName>
+                <opponentLName>Tomica</opponentLName>
+                <result>loss</result>
+            </match>
+        </matchHistoryList>
+    </player>
+</playerList>

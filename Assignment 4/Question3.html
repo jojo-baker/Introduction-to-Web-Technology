@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Question 3</title>
+        <script>
+            function turnJson() {
+                // get the full name
+                var fullName = document.getElementById("fullName").value;
+
+                // get the student number
+                var studentNum = Number(document.getElementById("studentNum").value);
+
+                // get the subject code
+                var subCode = document.getElementById("subCode").value;
+
+                // get the subject title
+                var subTitle = document.getElementById("subTitle").value;
+
+                // get the plagiarism declaration
+                var plagiarismDec = document.getElementById("plagiarismDec").value;
+
+                // create the object
+                var studentObj = {};
+                studentObj.full_name = fullName;
+                studentObj.student_name = studentNum;
+                studentObj.subject_code = subCode;
+                studentObj.subject_title = subTitle;
+                studentObj.plagiarism_dec = plagiarismDec;
+
+                // transform the object to JSON
+                var studentJson = JSON.stringify(studentObj, null, 2);
+
+                // display the JSON
+                var jsonDisplay = document.getElementById("jsonDisplay");
+                jsonDisplay.value = studentJson;
+            }
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td style="text-align:right;">
+                    Enter full name:
+                </td>
+                <td>
+                    <input type="text" id="fullName" name="fullName" size="50" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">
+                    Enter student number:
+                </td>
+                <td>
+                    <input type="text" id="studentNum" name="studentNum" size="50" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">
+                    Enter subject code:
+                </td>
+                <td>
+                    <input type="text" id="subCode" name="subCode" size="50" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">
+                    Enter subject title:
+                </td>
+                <td>
+                    <input type="text" id="subTitle" name="subTitle" size="50" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">
+                    Enter plagiarism declaration:
+                </td>
+                <td>
+                    <textarea rows="5" cols="50" id="plagiarismDec" name="plagiarismDec" ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">
+                    <button onclick="turnJson()">JSON stringify</button>
+                </td>
+                <td>
+                    <textarea rows="10" cols="50" id="jsonDisplay" name="jsonDisplay" ></textarea>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Question 5 | Jo Baker (7044604)</title>
+
+        <script>
+
+            function executeCommand() {
+                // get the input
+                var command = document.getElementById("commandInput").value;
+
+                // declare object 1 and 2
+                var obj1;
+                var obj2;
+
+                // retrieve the two objects and save into the variables
+                if(command.slice(6,12).includes("frog")) {
+                    obj1 = "frog";
+                }
+                if(command.slice(14,25).includes("frog")) {
+                    obj2 = "frog";
+                }
+                if(command.slice(6,12).includes("table")) {
+                    obj1 = "table";
+                }
+                if(command.slice(14,25).includes("table")) {
+                    obj2 = "table";
+                }
+                if(command.slice(6,12).includes("chair")) {
+                    obj1 = "chair";
+                }
+                if(command.slice(14,25).includes("chair")) {
+                    obj2 = "chair";
+                }
+                if(command.slice(6,12).includes("phone")) {
+                    obj1 = "phone";
+                }
+                if(command.slice(14,25).includes("phone")) {
+                    obj2 = "phone";
+                }
+                if(command.slice(6,12).includes("car")) {
+                    obj1 = "car";
+                }
+                if(command.slice(14,25).includes("car")) {
+                    obj2 = "car";
+                }
+                if(command != "Change " + obj1 + " to " + obj2) {
+                    alert("You have entered an invalid command");
+                }
+
+                // retrieve the src based on input
+                var image1 = document.getElementById(obj1);
+                var image2 = document.getElementById(obj2);
+
+                // swap out the id and src from object 1 with object 2
+                image1.src = "images/" + obj2 + ".jpg";
+                image1.id = obj2;
+                
+            }
+
+        </script>
+    </head>
+
+    <body>
+
+        Enter command:<br />
+        <input type="text" id="commandInput"><br /><br />
+        <button onclick="executeCommand()">Execute command</button><br /><br />
+        <img src="images/frog.jpg" height="100px" id="frog" >
+        <img src="images/table.jpg" height="100px" id="table" >
+        <img src="images/chair.jpg" height="100px" id="chair" >
+        <img src="images/phone.jpg" height="100px" id="phone" >
+        <img src="images/car.jpg" height="100px" id="car" >
+
+    </body>
+</html>
